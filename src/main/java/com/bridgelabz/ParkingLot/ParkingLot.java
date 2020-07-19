@@ -1,18 +1,29 @@
 package com.bridgelabz.ParkingLot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParkingLot {
       private Object vehicle;
+      List<Object> parkingLotList = new ArrayList<>();
+      private int PARKING_LOT_SIZE;
+      Owner owner = new Owner();
 
       public void park(Object vehicle) throws ParkingLotException {
-            if (this.vehicle != null)
-                  throw new ParkingLotException("Parking Lot full", ParkingLotException.ExceptionType.PARKING_LOT_FULL);
             this.vehicle = vehicle;
+            if (parkingLotList.size() > PARKING_LOT_SIZE)
+                  owner.parkingLotFUll();
+            parkingLotList.add(this.vehicle);
+      }
+
+      public void setParkingLotSize(int size) {
+            this.PARKING_LOT_SIZE = size;
       }
 
       public boolean unPark(Object vehicle) {
-            if (vehicle == null )
+            if (vehicle == null)
                   return false;
-            if (this.vehicle == vehicle){
+            if (this.vehicle == vehicle) {
                   this.vehicle = null;
                   return true;
             }
