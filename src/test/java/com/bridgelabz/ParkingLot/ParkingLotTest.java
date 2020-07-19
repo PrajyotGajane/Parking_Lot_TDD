@@ -33,4 +33,11 @@ public class ParkingLotTest {
             boolean alreadyParked = parkingLot.park(vehicle);
             Assert.assertFalse(alreadyParked);
       }
+      @Test
+      public void givenVehicle_WhenAlreadyUnParked_ShouldReturnFalse() {
+            parkingLot.park(vehicle);
+            parkingLot.unPark(vehicle);
+            boolean alreadyUnParked = parkingLot.unPark(vehicle);
+            Assert.assertFalse(alreadyUnParked);
+      }
 }
