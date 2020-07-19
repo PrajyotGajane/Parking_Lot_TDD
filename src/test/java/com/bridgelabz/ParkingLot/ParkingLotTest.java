@@ -7,11 +7,13 @@ import org.junit.Test;
 public class ParkingLotTest {
       Object vehicle;
       ParkingLot parkingLot;
+
       @Before
-      public void setUp(){
+      public void setUp() {
             vehicle = new Object();
             parkingLot = new ParkingLot();
       }
+
       @Test
       public void givenVehicle_WhenParked_ShouldReturnTrue() {
             boolean isPark = parkingLot.park(vehicle);
@@ -23,5 +25,12 @@ public class ParkingLotTest {
             parkingLot.park(vehicle);
             boolean unPark = parkingLot.unPark(vehicle);
             Assert.assertTrue(unPark);
+      }
+
+      @Test
+      public void givenVehicle_WhenAlreadyParked_ShouldReturnFalse() {
+            parkingLot.park(vehicle);
+            boolean alreadyParked = parkingLot.park(vehicle);
+            Assert.assertFalse(alreadyParked);
       }
 }
